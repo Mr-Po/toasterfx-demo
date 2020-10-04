@@ -1,0 +1,29 @@
+.toast-type-custom {
+    -fx-toast-type-color: #D4AF37;
+}
+
+.toast-type-custom .graphic-container > .graphic {
+    -fx-background-image: url("/org/pomo/toasterfx/demo/image/custom-type.png");
+    -fx-background-size: stretch stretch;
+
+    -fx-width: 2.26em;
+    -fx-height: 2.53em;
+
+    -fx-pref-width: -fx-width;
+    -fx-pref-height: -fx-height;
+    -fx-max-width: -fx-width;
+    -fx-max-height: -fx-height;
+}
+
+.toast-type-custom.small.graphic {
+    -fx-background-image: url("/org/pomo/toasterfx/demo/image/custom-type.png");
+    -fx-background-size: stretch stretch;
+
+    -fx-width: 1.06em;
+    -fx-height: 1.2em;
+
+    -fx-pref-width: -fx-width;
+    -fx-pref-height: -fx-height;
+    -fx-max-width: -fx-width;
+    -fx-max-height: -fx-height;
+}

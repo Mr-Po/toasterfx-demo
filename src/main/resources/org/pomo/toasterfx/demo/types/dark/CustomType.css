@@ -1,0 +1,7 @@
+.toast-type-custom .graphic-container > .graphic {
+    -fx-opacity: 85%;
+}
+
+.toast-type-custom.small.graphic {
+    -fx-opacity: 85%;
+}

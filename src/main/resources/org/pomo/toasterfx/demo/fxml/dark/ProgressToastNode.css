@@ -1,0 +1,33 @@
+.root {
+    -fx-cursor: default;
+
+    -dark-corlr: #464646;
+
+    -dark-text: #d8d8d8;
+    -dark-text-secondary: #c4c4c4;
+
+    /*label的默认颜色*/
+    -fx-text-background-color: -dark-text;
+}
+
+/* region {按钮} */
+.button,
+.button:focused {
+
+    -fx-shadow-highlight-color: derive(-dark-corlr, -20%);
+    -fx-outer-border: derive(-dark-corlr, -20%);
+    -fx-inner-border: derive(-dark-corlr, 70%);
+    -fx-body-bg-color: derive(-dark-corlr, 10%);
+    -fx-body-color: linear-gradient(
+            to bottom,
+            ladder(-fx-body-bg-color, derive(-fx-body-bg-color, 8%) 75%, derive(-fx-body-bg-color, 10%) 80%),
+            derive(-fx-body-bg-color, -8%)
+    );
+    -fx-background-insets: 0, 0, 1, 2;
+    -fx-text-base-color: -dark-text-secondary;
+}
+
+.button:hover {
+    -fx-body-bg-color: derive(-dark-corlr, 30%);
+}
+/* endregion */

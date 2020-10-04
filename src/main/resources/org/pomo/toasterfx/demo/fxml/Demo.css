@@ -1,0 +1,11 @@
+.root {
+
+    -width:40em;
+
+    -fx-pref-width: -width;
+    -fx-max-width: -width;
+}
+
+.context-menu {
+    -fx-pref-width: 31em;
+}
