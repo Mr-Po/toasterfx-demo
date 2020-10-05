@@ -1,6 +1,7 @@
 # ToasterFX 样例 [![language: English](https://img.shields.io/badge/language-English-brightgreen)](README_en.md)
 
 [![toasterfx: 1.0.2+](https://img.shields.io/badge/toasterfx-1.0.2%2B-green)](../../../toasterfx)
+[![Build Status](https://travis-ci.com/Mr-Po/toasterfx-demo.svg?branch=java11)](https://travis-ci.com/Mr-Po/toasterfx-demo)
 [![Apache License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)](LICENSE)
 
 [ToasterFX](../../../toasterfx) 的演示项目。
