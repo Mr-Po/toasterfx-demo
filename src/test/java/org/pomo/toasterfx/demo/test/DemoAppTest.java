@@ -59,7 +59,11 @@ public class DemoAppTest extends ApplicationTest {
 
         if (handler != null) {
 
+            log.debug("------------>: update handler.");
+
             Thread.currentThread().setUncaughtExceptionHandler((t, e) -> {
+
+                log.debug("--------->:", e);
 
                 if (!e.getClass().isAssignableFrom(MediaException.class)
                         || !"Could not create player!".equals(e.getMessage())) {

@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -15,6 +16,10 @@ public class ATest {
         ClassLoader classLoader = ATest.class.getClassLoader();
 
         System.out.println(classLoader);
+
+        URL resource = classLoader.getResource("org/pomo/toasterfx/demo/language/message_en.properties");
+
+        System.out.println(resource);
 
         try (InputStream inputStream = classLoader
                 .getResourceAsStream("org/pomo/toasterfx/demo/language/message_en.properties")) {
