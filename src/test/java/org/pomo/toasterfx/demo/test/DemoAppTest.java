@@ -22,6 +22,7 @@ import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.util.Throwables;
 import org.junit.Test;
 import org.pomo.toasterfx.demo.DemoApplication;
 import org.testfx.framework.junit.ApplicationTest;
@@ -54,23 +55,23 @@ public class DemoAppTest extends ApplicationTest {
     @Override
     public void start(Stage stage) {
 
+        Thread javafxThread = Thread.currentThread();
+
         final Thread.UncaughtExceptionHandler handler
-                = Thread.currentThread().getUncaughtExceptionHandler();
+                = javafxThread.getUncaughtExceptionHandler();
 
         if (handler != null) {
 
-            log.debug("------------>: update handler.");
+            javafxThread.setUncaughtExceptionHandler((t, e) -> {
 
-            Thread.currentThread().setUncaughtExceptionHandler((t, e) -> {
+                Throwable rootCause = Throwables.getRootCause(e);
 
-                log.debug("--------->:", e);
-
-                if (!e.getClass().isAssignableFrom(MediaException.class)
-                        || !"Could not create player!".equals(e.getMessage())) {
+                if (!rootCause.getClass().isAssignableFrom(MediaException.class)
+                        || !"Could not create player!".equals(rootCause.getMessage())) {
 
                     handler.uncaughtException(t, e);
 
-                } else log.debug("JavaFX Application Thread: {}", e.getMessage());
+                } else log.debug(rootCause.getMessage());
             });
         }
 
