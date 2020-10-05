@@ -15,11 +15,18 @@
  */
 package org.pomo.toasterfx.demo.test;
 
+import javafx.scene.Node;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.pomo.toasterfx.demo.DemoApplication;
 import org.testfx.framework.junit.ApplicationTest;
+
+import java.util.Locale;
+import java.util.Set;
 
 /**
  * <h2>样例程序测试</h2>
@@ -53,13 +60,45 @@ public class DemoAppTest extends ApplicationTest {
         this.application.stop();
     }
 
+    /**
+     * <h2>点击全部按钮</h2>
+     */
     @Test
-    public void testSuccessButton() {
-        clickOn("#btnSuccess");
+    @SneakyThrows
+    public void execute() {
+
+        Set<Node> nodes = lookup(".button").queryAll();
+        nodes.forEach(this::clickOn);
+
+        clickOn("#radioThemeDark");
+        nodes.forEach(this::clickOn);
+
+        clickOn("#radioRightTop");
+        nodes.forEach(this::clickOn);
+
+        ChoiceBox<Locale> cbxLanguage = lookup("#cbxLanguage").query();
+
+        clickOn(cbxLanguage);
+        key(KeyCode.ENTER);
+
+        clickOn(cbxLanguage);
+        key(KeyCode.DOWN);
+        key(KeyCode.ENTER);
+
+        clickOn(cbxLanguage);
+        key(KeyCode.DOWN);
+        key(KeyCode.ENTER);
+
+        nodes.forEach(this::clickOn);
     }
 
-    @Test
-    public void testFailButton() {
-        clickOn("#btnFail");
+    /**
+     * <h2>模拟键盘点击</h2>
+     *
+     * @param code 键位
+     */
+    private void key(KeyCode code) {
+        press(code);
+        release(code);
     }
 }
