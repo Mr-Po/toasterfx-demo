@@ -122,9 +122,9 @@ public class DemoAppTest extends ApplicationTest {
 
             Throwable rootCause = Throwables.getRootCause(throwable);
 
-            // 排除音频无法播放的
-            if (!"com.sun.media.jfxmedia.MediaException".equals(rootCause.getClass().getName())
-                    && !"Could not create player!".equals(rootCause.getMessage())) {
+            // 排除 无法创建音频播放器的异常
+            if (!("com.sun.media.jfxmedia.MediaException".equals(rootCause.getClass().getName())
+                    && "Could not create player!".equals(rootCause.getMessage()))) {
 
                 log.error("handle: " + node, rootCause);
 
