@@ -119,8 +119,11 @@ public class DemoApplication extends Application {
 
         primaryStage.show();
 
-        SplashScreen splashScreen = SplashScreen.getSplashScreen();
-        if (splashScreen != null) splashScreen.close();
+        // 非无头环境执行
+        if (!GraphicsEnvironment.isHeadless()) {
+            SplashScreen splashScreen = SplashScreen.getSplashScreen();
+            if (splashScreen != null) splashScreen.close();
+        }
     }
 
     @Override
