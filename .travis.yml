@@ -4,16 +4,19 @@ language: java
 sudo: false
 
 os: linux
+dist: trusty
+jdk: oraclejdk8
+env:
+  - _JAVA_OPTIONS="-Djava.awt.headless=true -Dtestfx.robot=glass -Dtestfx.headless=true -Dprism.order=sw -Dprism.text=t2k -Dtestfx.setup.timeout=2500"
 
-jdk:
-  - openjdk8
+addons:
+  apt:
+    packages:
+      - oracle-java8-installer
 
 before_install:
-  - sudo apt-get install -y openjfx
+  - if [[ "${TRAVIS_OS_NAME}" == linux ]]; then export DISPLAY=:99.0; sh -e /etc/init.d/xvfb start; fi
 
-# 开启虚拟gui服务
-services:
-  - xvfb
 
 # 跳过maven完整构建
 install: true
