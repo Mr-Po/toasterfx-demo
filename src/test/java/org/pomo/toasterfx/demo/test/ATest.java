@@ -17,23 +17,25 @@ public class ATest {
 
         System.out.println(classLoader);
 
-        URL resource = ATest.class.getResource("/org/pomo/toasterfx/demo/language/message_en.properties");
+        URL resource = ATest.class.getResource("org/pomo/toasterfx/demo/language/message_en.properties");
+        System.out.println("url: " + resource);
 
-        System.out.println(resource);
+        resource = ATest.class.getResource("/org/pomo/toasterfx/demo/language/message_en.properties");
+        System.out.println("url: " + resource);
 
         try (InputStream inputStream = classLoader
                 .getResourceAsStream("org/pomo/toasterfx/demo/language/message_en.properties")) {
-            System.out.println("ATest.class.getClassLoader(): "+inputStream);
+            System.out.println("ATest.class.getClassLoader(): " + inputStream);
         }
 
         try (InputStream inputStream = classLoader
                 .getResourceAsStream("/org/pomo/toasterfx/demo/language/message_en.properties")) {
-            System.out.println("ATest.class.getClassLoader():/ "+inputStream);
+            System.out.println("ATest.class.getClassLoader():/ " + inputStream);
         }
 
         try (InputStream inputStream = Thread.currentThread().getContextClassLoader()
                 .getResourceAsStream("org/pomo/toasterfx/demo/language/message_en.properties")) {
-            System.out.println("Thread.currentThread().getContextClassLoader(): "+inputStream);
+            System.out.println("Thread.currentThread().getContextClassLoader(): " + inputStream);
         }
     }
 
