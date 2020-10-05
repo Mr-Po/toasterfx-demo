@@ -1,17 +1,8 @@
 language: java
 
-# 无需root权限
 sudo: false
-
 os: linux
-
-matrix:
-  fast_finish: true
-  include:
-    - jdk: openjdk8
-      if: branch = master
-    - jdk: openjdk11
-      if: branch = java11
+jdk: openjdk8
 
 # 安装openjfx
 before_install: sudo apt-get install -y openjfx
