@@ -119,8 +119,11 @@ public class DemoApplication extends Application {
 
         primaryStage.show();
 
-        SplashScreen splashScreen = SplashScreen.getSplashScreen();
-        if (splashScreen != null) splashScreen.close();
+        // 非无头环境执行
+        if (!GraphicsEnvironment.isHeadless()) {
+            SplashScreen splashScreen = SplashScreen.getSplashScreen();
+            if (splashScreen != null) splashScreen.close();
+        }
     }
 
     @Override
@@ -179,6 +182,8 @@ public class DemoApplication extends Application {
                 .filter(it -> it.equals(defaultLocale))
                 .findAny()
                 .orElse(supportLocales[0]);
+
+        System.out.println("use：" + locale);
 
         localeWrapper.set(locale);
 
