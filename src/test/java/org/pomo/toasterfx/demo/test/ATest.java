@@ -2,6 +2,7 @@ package org.pomo.toasterfx.demo.test;
 
 import org.junit.Test;
 
+import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -24,6 +25,12 @@ public class ATest {
 
         ResourceBundle bundle = ResourceBundle.getBundle("org.pomo.toasterfx.demo.language.message", Locale.SIMPLIFIED_CHINESE);
         System.out.println(bundle.getString("demo.title"));
+    }
 
+    @Test
+    public void t04(){
+
+        URL resource = ATest.class.getResource("/org/pomo/toasterfx/demo/language/Message_en.properties");
+        System.out.println(resource);
     }
 }
