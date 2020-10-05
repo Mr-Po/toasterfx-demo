@@ -2,38 +2,47 @@ package org.pomo.toasterfx.demo.test;
 
 import org.junit.Test;
 
-import java.net.URL;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class ATest {
 
     @Test
-    public void t01() {
-        ResourceBundle bundle = ResourceBundle.getBundle(
-                "org.pomo.toasterfx.demo.language.message",
-                Locale.ENGLISH,
-                ATest.class.getClassLoader());
-        System.out.println(bundle.getString("demo.title"));
+    public void t01() throws IOException {
+
+        ClassLoader classLoader = ATest.class.getClassLoader();
+
+        System.out.println(classLoader);
+
+        try (InputStream inputStream = classLoader
+                .getResourceAsStream("org/pomo/toasterfx/demo/language/message_en.properties")) {
+            System.out.println("ATest.class.getClassLoader(): "+inputStream);
+        }
+
+        try (InputStream inputStream = classLoader
+                .getResourceAsStream("/org/pomo/toasterfx/demo/language/message_en.properties")) {
+            System.out.println("ATest.class.getClassLoader():/ "+inputStream);
+        }
+
+        try (InputStream inputStream = Thread.currentThread().getContextClassLoader()
+                .getResourceAsStream("org/pomo/toasterfx/demo/language/message_en.properties")) {
+            System.out.println("Thread.currentThread().getContextClassLoader(): "+inputStream);
+        }
     }
 
     @Test
     public void t02() {
-        ResourceBundle bundle = ResourceBundle.getBundle("org.pomo.toasterfx.demo.language.message", Locale.KOREA);
+
+        ClassLoader classLoader = ATest.class.getClassLoader();
+
+        System.out.println(classLoader);
+
+        ResourceBundle bundle = ResourceBundle.getBundle(
+                "org.pomo.toasterfx.demo.language.message",
+                Locale.ENGLISH,
+                classLoader);
         System.out.println(bundle.getString("demo.title"));
-    }
-
-    @Test
-    public void t03(){
-
-        ResourceBundle bundle = ResourceBundle.getBundle("org.pomo.toasterfx.demo.language.message", Locale.SIMPLIFIED_CHINESE);
-        System.out.println(bundle.getString("demo.title"));
-    }
-
-    @Test
-    public void t04(){
-
-        URL resource = ATest.class.getResource("/org/pomo/toasterfx/demo/language/Message_en.properties");
-        System.out.println(resource);
     }
 }
