@@ -15,6 +15,7 @@
  */
 package org.pomo.toasterfx.demo.test;
 
+import com.sun.media.jfxmedia.MediaException;
 import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.input.KeyCode;
@@ -52,6 +53,23 @@ public class DemoAppTest extends ApplicationTest {
 
     @Override
     public void start(Stage stage) {
+
+        final Thread.UncaughtExceptionHandler handler
+                = Thread.currentThread().getUncaughtExceptionHandler();
+
+        if (handler != null) {
+
+            Thread.currentThread().setUncaughtExceptionHandler((t, e) -> {
+
+                if (!e.getClass().isAssignableFrom(MediaException.class)
+                        || !"Could not create player!".equals(e.getMessage())) {
+
+                    handler.uncaughtException(t, e);
+
+                } else log.debug("JavaFX Application Thread: {}", e.getMessage());
+            });
+        }
+
         this.application.start(stage);
     }
 
@@ -71,10 +89,7 @@ public class DemoAppTest extends ApplicationTest {
         nodes.forEach(this::clickOn);
 
         clickOn("#radioThemeDark");
-        nodes.forEach(this::clickOn);
-
         clickOn("#radioRightTop");
-        nodes.forEach(this::clickOn);
 
         ChoiceBox<Locale> cbxLanguage = lookup("#cbxLanguage").query();
 
