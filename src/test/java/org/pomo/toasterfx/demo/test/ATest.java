@@ -17,24 +17,24 @@ public class ATest {
 
         System.out.println(classLoader);
 
-        URL resource = ATest.class.getResource("org/pomo/toasterfx/demo/language/message_en.properties");
+        URL resource = ATest.class.getResource("org/pomo/toasterfx/demo/language/Message_en.properties");
         System.out.println("url: " + resource);
 
-        resource = ATest.class.getResource("/org/pomo/toasterfx/demo/language/message_en.properties");
+        resource = ATest.class.getResource("/org/pomo/toasterfx/demo/language/Message_en.properties");
         System.out.println("url: " + resource);
 
         try (InputStream inputStream = classLoader
-                .getResourceAsStream("org/pomo/toasterfx/demo/language/message_en.properties")) {
+                .getResourceAsStream("org/pomo/toasterfx/demo/language/Message_en.properties")) {
             System.out.println("ATest.class.getClassLoader(): " + inputStream);
         }
 
         try (InputStream inputStream = classLoader
-                .getResourceAsStream("/org/pomo/toasterfx/demo/language/message_en.properties")) {
+                .getResourceAsStream("/org/pomo/toasterfx/demo/language/Message_en.properties")) {
             System.out.println("ATest.class.getClassLoader():/ " + inputStream);
         }
 
         try (InputStream inputStream = Thread.currentThread().getContextClassLoader()
-                .getResourceAsStream("org/pomo/toasterfx/demo/language/message_en.properties")) {
+                .getResourceAsStream("org/pomo/toasterfx/demo/language/Message_en.properties")) {
             System.out.println("Thread.currentThread().getContextClassLoader(): " + inputStream);
         }
     }
@@ -47,7 +47,7 @@ public class ATest {
         System.out.println(classLoader);
 
         ResourceBundle bundle = ResourceBundle.getBundle(
-                "org.pomo.toasterfx.demo.language.message",
+                "org.pomo.toasterfx.demo.language.Message",
                 Locale.ENGLISH,
                 classLoader);
         System.out.println(bundle.getString("demo.title"));
