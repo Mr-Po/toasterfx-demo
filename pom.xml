@@ -48,8 +48,6 @@
         <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
         <project.build.resourceEncoding>${project.encoding}</project.build.resourceEncoding>
         <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
-
-        <testfx.version>4.0.4-alpha</testfx.version>
     </properties>
 
     <dependencies>
@@ -89,14 +87,14 @@
         <dependency>
             <groupId>org.testfx</groupId>
             <artifactId>testfx-core</artifactId>
-            <version>${testfx.version}</version>
+            <version>4.0.16-alpha</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.testfx</groupId>
             <artifactId>testfx-junit</artifactId>
-            <version>${testfx.version}</version>
+            <version>4.0.15-alpha</version>
             <scope>test</scope>
         </dependency>
 
