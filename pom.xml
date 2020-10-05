@@ -7,7 +7,7 @@
 
     <groupId>com.gitee.pomo</groupId>
     <artifactId>toasterfx-demo</artifactId>
-    <version>1.0</version>
+    <version>11.0</version>
     <packaging>jar</packaging>
 
     <!--region 项目描述-->
@@ -39,7 +39,7 @@
     <!--endregion-->
 
     <properties>
-        <jdk.version>8</jdk.version>
+        <jdk.version>11</jdk.version>
         <project.encoding>UTF-8</project.encoding>
 
         <maven.compiler.source>${jdk.version}</maven.compiler.source>
@@ -50,7 +50,16 @@
         <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
 
         <testfx.version>4.0.16-alpha</testfx.version>
+        <jfx.version>11.0.2</jfx.version>
+        <lombok.version>edge-SNAPSHOT</lombok.version>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>projectlombok.org</id>
+            <url>https://projectlombok.org/edge-releases</url>
+        </repository>
+    </repositories>
 
     <dependencies>
 
@@ -66,16 +75,50 @@
             <version>1.0.2-SNAPSHOT</version>
         </dependency>
 
+        <!--region JFX-->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${jfx.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-media</artifactId>
+            <version>${jfx.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>${jfx.version}</version>
+        </dependency>
+
+        <!--用于调试界面-->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-swing</artifactId>
+            <version>${jfx.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!--endregion-->
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.0-alpha1</version>
+        </dependency>
+
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
+            <version>1.3.0-alpha5</version>
         </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.10</version>
+            <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -141,6 +184,23 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <!--endregion-->
+
+            <!--region 编译，解决lombok无法编译的问题-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
             </plugin>
             <!--endregion-->
 
