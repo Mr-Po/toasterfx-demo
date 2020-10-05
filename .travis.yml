@@ -1,16 +1,23 @@
 language: java
 
+# 无需root权限
 sudo: false
-dist: trusty
+
 os: linux
 
 matrix:
   fast_finish: true
   include:
-    - jdk: oraclejdk8
+    - jdk: openjdk8
       if: branch = master
     - jdk: openjdk11
       if: branch = java11
+
+# 安装openjfx
+before_install: sudo apt-get install -y openjfx
+
+# 开启虚拟gui服务
+services: xvfb
 
 # 跳过maven完整构建
 install: true
