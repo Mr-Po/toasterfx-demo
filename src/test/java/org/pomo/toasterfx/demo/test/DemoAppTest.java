@@ -20,12 +20,13 @@ import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.util.Throwables;
+import org.junit.Assert;
 import org.junit.Test;
 import org.pomo.toasterfx.demo.DemoApplication;
 import org.testfx.framework.junit.ApplicationTest;
+import org.testfx.util.WaitForAsyncUtils;
 
 import java.util.Locale;
 import java.util.Set;
@@ -49,38 +50,14 @@ public class DemoAppTest extends ApplicationTest {
 
     @Override
     public void init() {
+        WaitForAsyncUtils.autoCheckException = false;
+        WaitForAsyncUtils.printException = false;
+
         this.application = new DemoApplication();
     }
 
     @Override
     public void start(Stage stage) {
-
-        Thread javafxThread = Thread.currentThread();
-
-        final Thread.UncaughtExceptionHandler handler
-                = javafxThread.getUncaughtExceptionHandler();
-
-        if (handler != null) {
-
-            log.debug("---->update handler.");
-
-            javafxThread.setUncaughtExceptionHandler((t, e) -> {
-
-                log.debug("------->handle: ", e);
-
-                Throwable rootCause = Throwables.getRootCause(e);
-
-                rootCause.getSuppressed();
-
-                if (!rootCause.getClass().isAssignableFrom(MediaException.class)
-                        || !"Could not create player!".equals(rootCause.getMessage())) {
-
-                    handler.uncaughtException(t, e);
-
-                } else log.debug(rootCause.getMessage());
-            });
-        }
-
         this.application.start(stage);
     }
 
@@ -93,29 +70,68 @@ public class DemoAppTest extends ApplicationTest {
      * <h2>点击全部按钮</h2>
      */
     @Test
-    @SneakyThrows
     public void execute() {
 
         Set<Node> nodes = lookup(".button").queryAll();
-        nodes.forEach(this::clickOn);
+        nodes.forEach(this::click);
 
-        clickOn("#radioThemeDark");
-        clickOn("#radioRightTop");
+        this.click(lookup("#radioThemeDark").query());
+        this.click(lookup("#radioRightTop").query());
 
         ChoiceBox<Locale> cbxLanguage = lookup("#cbxLanguage").query();
 
-        clickOn(cbxLanguage);
+        this.click(cbxLanguage);
         key(KeyCode.ENTER);
+        this.handleException(cbxLanguage);
 
-        clickOn(cbxLanguage);
+        this.click(cbxLanguage);
         key(KeyCode.DOWN);
         key(KeyCode.ENTER);
+        this.handleException(cbxLanguage);
 
-        clickOn(cbxLanguage);
+        this.click(cbxLanguage);
         key(KeyCode.DOWN);
         key(KeyCode.ENTER);
+        this.handleException(cbxLanguage);
 
-        nodes.forEach(this::clickOn);
+        nodes.forEach(this::click);
+    }
+
+    /**
+     * <h2>点击</h2>
+     *
+     * @param node 节点
+     */
+    private void click(Node node) {
+
+        this.clickOn(node);
+        this.handleException(node);
+    }
+
+    /**
+     * <h2>处理异常</h2>
+     *
+     * @param node 节点
+     */
+    private void handleException(Node node) {
+
+        try {
+
+            WaitForAsyncUtils.checkException();
+
+        } catch (Throwable throwable) {
+
+            Throwable rootCause = Throwables.getRootCause(throwable);
+
+            // 排除音频无法播放的
+            if (!rootCause.getClass().isAssignableFrom(MediaException.class)
+                    && !"Could not create player!".equals(rootCause.getMessage())) {
+
+                log.error("handle: " + node, rootCause);
+
+                Assert.fail(Throwables.getRootCause(throwable).getMessage());
+            }
+        }
     }
 
     /**
