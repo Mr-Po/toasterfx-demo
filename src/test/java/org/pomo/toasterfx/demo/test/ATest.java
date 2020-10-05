@@ -10,7 +10,10 @@ public class ATest {
 
     @Test
     public void t01() {
-        ResourceBundle bundle = ResourceBundle.getBundle("org.pomo.toasterfx.demo.language.message", Locale.ENGLISH);
+        ResourceBundle bundle = ResourceBundle.getBundle(
+                "org.pomo.toasterfx.demo.language.message",
+                Locale.ENGLISH,
+                ATest.class.getClassLoader());
         System.out.println(bundle.getString("demo.title"));
     }
 
