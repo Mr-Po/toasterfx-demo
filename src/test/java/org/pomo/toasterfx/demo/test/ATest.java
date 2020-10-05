@@ -9,11 +9,21 @@ public class ATest {
 
     @Test
     public void t01() {
-        System.out.println(ResourceBundle.getBundle("org.pomo.toasterfx.demo.language.message", Locale.ENGLISH));
+        ResourceBundle bundle = ResourceBundle.getBundle("org.pomo.toasterfx.demo.language.message", Locale.ENGLISH);
+        System.out.println(bundle.getString("demo.title"));
     }
 
     @Test
     public void t02() {
-        System.out.println(ResourceBundle.getBundle("org.pomo.toasterfx.demo.language.message", Locale.US));
+        ResourceBundle bundle = ResourceBundle.getBundle("org.pomo.toasterfx.demo.language.message", Locale.KOREA);
+        System.out.println(bundle.getString("demo.title"));
+    }
+
+    @Test
+    public void t03(){
+
+        ResourceBundle bundle = ResourceBundle.getBundle("org.pomo.toasterfx.demo.language.message", Locale.SIMPLIFIED_CHINESE);
+        System.out.println(bundle.getString("demo.title"));
+
     }
 }
