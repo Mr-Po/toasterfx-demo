@@ -172,6 +172,9 @@ public class DemoApplication extends Application {
 
         Locale[] supportLocales = this.getSupportLocales();
 
+        System.out.println(supportLocales[0]);
+        System.out.println(defaultLocale);
+
         Locale locale = Arrays.stream(supportLocales)
                 .filter(it -> it.equals(defaultLocale))
                 .findAny()
