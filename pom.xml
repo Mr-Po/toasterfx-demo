@@ -49,7 +49,7 @@
         <project.build.resourceEncoding>${project.encoding}</project.build.resourceEncoding>
         <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
 
-        <testfx.version>4.0.16-alpha</testfx.version>
+        <testfx.version>4.0.4-alpha</testfx.version>
     </properties>
 
     <dependencies>
@@ -97,13 +97,6 @@
             <groupId>org.testfx</groupId>
             <artifactId>testfx-junit</artifactId>
             <version>${testfx.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest</artifactId>
-            <version>2.1</version>
             <scope>test</scope>
         </dependency>
 
