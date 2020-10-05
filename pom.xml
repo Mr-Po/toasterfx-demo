@@ -98,13 +98,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!--<dependency>
-            <groupId>org.testfx</groupId>
-            <artifactId>openjfx-monocle</artifactId>
-            <version>8u76-b04</version> &lt;!&ndash; jdk-9+181 for Java 9 &ndash;&gt;
-            <scope>test</scope>
-        </dependency>-->
-
     </dependencies>
 
     <build>

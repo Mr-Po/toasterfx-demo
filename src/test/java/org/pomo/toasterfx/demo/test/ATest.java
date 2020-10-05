@@ -17,7 +17,7 @@ public class ATest {
 
         System.out.println(classLoader);
 
-        URL resource = classLoader.getResource("org/pomo/toasterfx/demo/language/message_en.properties");
+        URL resource = ATest.class.getResource("/org/pomo/toasterfx/demo/language/message_en.properties");
 
         System.out.println(resource);
 
