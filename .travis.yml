@@ -9,7 +9,7 @@ jdk:
   - openjdk8
 
 env:
-  - _JAVA_OPTIONS="-Djava.awt.headless=true -Dtestfx.robot=glass -Dtestfx.headless=true -Dprism.order=sw"
+  - _JAVA_OPTIONS="-Djava.awt.headless=true -Dtestfx.robot=glass -Dglass.platform=Monocle -Dmonocle.platform=Headless -Dtestfx.headless=true -Dprism.order=sw"
 
 before_install:
   - sudo apt-get install -y openjfx
