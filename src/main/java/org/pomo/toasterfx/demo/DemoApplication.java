@@ -69,7 +69,7 @@ public class DemoApplication extends Application {
      * 国际化基础包名
      */
     @Getter
-    private final String basename = "org.pomo.toasterfx.demo.language.message";
+    private final String basename = "org.pomo.toasterfx.demo.language.Message";
 
     /**
      * 样例控制器
