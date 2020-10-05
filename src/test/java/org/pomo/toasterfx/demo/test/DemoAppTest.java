@@ -66,6 +66,8 @@ public class DemoAppTest extends ApplicationTest {
 
                 Throwable rootCause = Throwables.getRootCause(e);
 
+                rootCause.getSuppressed();
+
                 if (!rootCause.getClass().isAssignableFrom(MediaException.class)
                         || !"Could not create player!".equals(rootCause.getMessage())) {
 
