@@ -62,7 +62,11 @@ public class DemoAppTest extends ApplicationTest {
 
         if (handler != null) {
 
+            log.debug("---->update handler.");
+
             javafxThread.setUncaughtExceptionHandler((t, e) -> {
+
+                log.debug("------->handle: ", e);
 
                 Throwable rootCause = Throwables.getRootCause(e);
 
