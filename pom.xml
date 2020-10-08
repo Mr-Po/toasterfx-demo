@@ -65,13 +65,13 @@
         <dependency>
             <groupId>com.gitee.pomo</groupId>
             <artifactId>toasterfx</artifactId>
-            <version>1.0.2-SNAPSHOT</version>
+            <version>1.0.2</version>
         </dependency>
 
         <dependency>
             <groupId>com.gitee.pomo</groupId>
             <artifactId>toasterfx-resource-audio</artifactId>
-            <version>1.0.2-SNAPSHOT</version>
+            <version>1.0.2</version>
         </dependency>
 
         <!--region JFX-->
