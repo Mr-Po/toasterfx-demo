@@ -37,6 +37,7 @@ import org.pomo.toasterfx.ToastBarToasterService;
 import org.pomo.toasterfx.ToasterFactory;
 import org.pomo.toasterfx.component.SimpleListToastSupplier;
 import org.pomo.toasterfx.control.impl.ToastBar;
+import org.pomo.toasterfx.controller.TableViewListToastController;
 import org.pomo.toasterfx.demo.task.ProgressTask;
 import org.pomo.toasterfx.model.ReferenceType;
 import org.pomo.toasterfx.model.ToastParameter;
@@ -295,13 +296,13 @@ public class DemoController {
 
                 stylesheets.add("/org/pomo/toasterfx/demo/fxml/dark/Demo.css");
                 toasterStylesheets.addAll(darkThemeStylesheets);
-                windowStylesheets.add(SimpleListToastSupplier.DARK_THEME_STYLESHEETS);
+                windowStylesheets.add(TableViewListToastController.DARK_THEME_STYLESHEETS);
                 windowStylesheets.add("/org/pomo/toasterfx/demo/types/dark/CustomType.css");
 
             } else if (radioButton == this.radioThemeDefault) {
 
                 toasterStylesheets.removeAll(darkThemeStylesheets);
-                windowStylesheets.remove(SimpleListToastSupplier.DARK_THEME_STYLESHEETS);
+                windowStylesheets.remove(TableViewListToastController.DARK_THEME_STYLESHEETS);
                 windowStylesheets.remove("/org/pomo/toasterfx/demo/types/dark/CustomType.css");
 
             } else throw new IllegalArgumentException("unknown theme : " + radioButton.getText());
