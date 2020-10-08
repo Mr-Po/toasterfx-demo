@@ -1,8 +1,8 @@
 # ToasterFX 样例 [![language: English](https://img.shields.io/badge/-English-blue?style=social&logo=markdown)](README_en.md)
 
-[![Build Status](https://travis-ci.com/Mr-Po/toasterfx-demo.svg?branch=master)](https://travis-ci.com/Mr-Po/toasterfx-demo)
+[![Build Status](https://travis-ci.com/Mr-Po/toasterfx-demo.svg?branch=java11)](https://travis-ci.com/Mr-Po/toasterfx-demo)
 [![Language grade: Java](https://img.shields.io/lgtm/grade/java/github/Mr-Po/toasterfx-demo?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Mr-Po/toasterfx-demo/context:java)
-[![codecov](https://codecov.io/gh/Mr-Po/toasterfx-demo/branch/master/graph/badge.svg)](https://codecov.io/gh/Mr-Po/toasterfx-demo)
+[![codecov](https://codecov.io/gh/Mr-Po/toasterfx-demo/branch/java11/graph/badge.svg)](https://codecov.io/gh/Mr-Po/toasterfx-demo)
 
 [![License](https://img.shields.io/github/license/Mr-Po/toasterfx-demo?color=blue)](LICENSE)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FMr-Po%2Ftoasterfx-demo.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FMr-Po%2Ftoasterfx-demo?ref=badge_shield)
