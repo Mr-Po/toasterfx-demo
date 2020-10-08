@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.com/Mr-Po/toasterfx-demo.svg?branch=master)](https://travis-ci.com/Mr-Po/toasterfx-demo)
 [![Language grade: Java](https://img.shields.io/lgtm/grade/java/github/Mr-Po/toasterfx-demo?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Mr-Po/toasterfx-demo/context:java)
 [![codecov](https://codecov.io/gh/Mr-Po/toasterfx-demo/branch/master/graph/badge.svg)](https://codecov.io/gh/Mr-Po/toasterfx-demo)
-[![Release](https://img.shields.io/github/v/release/Mr-Po/toasterfx-demo)](releases)
+[![Release](https://img.shields.io/github/v/release/Mr-Po/toasterfx-demo)](../../releases)
 
 [![License](https://img.shields.io/github/license/Mr-Po/toasterfx-demo?color=blue)](LICENSE)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FMr-Po%2Ftoasterfx-demo.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FMr-Po%2Ftoasterfx-demo?ref=badge_shield)
