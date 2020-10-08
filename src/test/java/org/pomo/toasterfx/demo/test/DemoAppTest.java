@@ -62,7 +62,13 @@ public class DemoAppTest extends ApplicationTest {
 
     @Override
     public void stop() {
+
         this.application.stop();
+
+        this.handleException();
+
+        WaitForAsyncUtils.autoCheckException = true;
+        WaitForAsyncUtils.printException = true;
     }
 
     /**
@@ -81,17 +87,17 @@ public class DemoAppTest extends ApplicationTest {
 
         this.click(cbxLanguage);
         key(KeyCode.ENTER);
-        this.handleException(cbxLanguage);
+        this.handleException();
 
         this.click(cbxLanguage);
         key(KeyCode.DOWN);
         key(KeyCode.ENTER);
-        this.handleException(cbxLanguage);
+        this.handleException();
 
         this.click(cbxLanguage);
         key(KeyCode.DOWN);
         key(KeyCode.ENTER);
-        this.handleException(cbxLanguage);
+        this.handleException();
 
         nodes.forEach(this::click);
     }
@@ -102,34 +108,37 @@ public class DemoAppTest extends ApplicationTest {
      * @param node 节点
      */
     private void click(Node node) {
-
         this.clickOn(node);
-        this.handleException(node);
+        this.handleException();
     }
 
     /**
      * <h2>处理异常</h2>
-     *
-     * @param node 节点
      */
-    private void handleException(Node node) {
+    private void handleException() {
 
-        try {
+        while (true) {
 
-            WaitForAsyncUtils.checkException();
+            try {
 
-        } catch (Throwable throwable) {
+                WaitForAsyncUtils.checkException();
 
-            Throwable rootCause = Throwables.getRootCause(throwable);
+            } catch (Throwable throwable) {
 
-            // 排除 无法创建音频播放器的异常
-            if (!("com.sun.media.jfxmedia.MediaException".equals(rootCause.getClass().getName())
-                    && "Could not create player!".equals(rootCause.getMessage()))) {
+                Throwable rootCause = Throwables.getRootCause(throwable);
 
-                log.error("handle: " + node, rootCause);
+                // 排除 无法创建音频播放器的异常
+                if (!("com.sun.media.jfxmedia.MediaException".equals(rootCause.getClass().getName())
+                        && "Could not create player!".equals(rootCause.getMessage()))) {
 
-                Assert.fail(Throwables.getRootCause(throwable).getMessage());
+                    Assert.fail(Throwables.getRootCause(throwable).getMessage());
+
+                } else log.debug("a MediaException was ignored.");
+
+                continue;
             }
+
+            break;
         }
     }
 

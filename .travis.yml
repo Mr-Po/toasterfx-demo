@@ -4,7 +4,6 @@ sudo: false
 os: linux
 jdk: openjdk8
 
-# 安装openjfx
 before_install: sudo apt-get install -y openjfx
 
 # 开启虚拟gui服务
@@ -15,3 +14,6 @@ install: true
 
 # 运行maven测试
 script: mvn test
+
+# 将测试样例报告发生给codecov.io
+after_success: bash <(curl -s https://codecov.io/bash)

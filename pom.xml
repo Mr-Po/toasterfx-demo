@@ -115,6 +115,7 @@
                             <excludes>
                                 <exclude>**/README</exclude>
                                 <exclude>**/pom.xml</exclude>
+                                <exclude>**/.lgtm.yml</exclude>
                                 <exclude>src/test/resources/**</exclude>
                                 <exclude>src/main/resources/**</exclude>
                             </excludes>
@@ -152,6 +153,55 @@
                     <!--当仅存在守护线程时，退出-->
                     <cleanupDaemonThreads>false</cleanupDaemonThreads>
                 </configuration>
+            </plugin>
+            <!--endregion-->
+
+            <!--region 执行jacoco，得到测试样例覆盖率-->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.6</version>
+                <executions>
+
+                    <execution>
+                        <id>default-prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+
+                    <execution>
+                        <id>default-report</id>
+                        <!--将此执行加入到测试阶段-->
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+
+                    <!--打包时，要求覆盖率高于70%-->
+                    <execution>
+                        <id>default-check</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <rule>
+                                    <element>BUNDLE</element>
+                                    <limits>
+                                        <limit>
+                                            <counter>INSTRUCTION</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>0.70</minimum>
+                                        </limit>
+                                    </limits>
+                                </rule>
+                            </rules>
+                        </configuration>
+                    </execution>
+
+                </executions>
             </plugin>
             <!--endregion-->
 
