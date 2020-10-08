@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Main-Class: org.pomo.toasterfx.demo.DemoApplication
+Class-Path: lib/logback-classic-1.2.3.jar lib/logback-core-1.2.3.jar lib
+ /toasterfx-resource-audio-1.0.2.jar lib/toasterfx-1.0.2.jar lib/slf4j-a
+ pi-1.7.30.jar
+SplashScreen-Image: org/pomo/toasterfx/demo/image/load.png
